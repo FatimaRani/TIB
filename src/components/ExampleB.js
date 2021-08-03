@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import { NavLink } from 'react-router-dom';
 import './visWidgetConfig.css';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
@@ -46,7 +47,9 @@ class ExampleB extends Component {
                         })}
                     </div>
                     <div>Paper Data:</div>
-                    <div>Paper doi: {doiValue}</div>
+                    <div>
+                    Paper doi:  <a style={{ color: '#6199E8' }} href={doiValue}>{doiValue}</a>
+                    </div>
                 </div>
             );
         }
