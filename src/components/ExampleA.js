@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Table } from 'reactstrap';
+//import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 import './visWidgetConfig.css';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
@@ -53,7 +55,7 @@ class ExampleA extends Component {
     renderComparisonTable = () => {
         const dataFrame = this.state.requestedData.comparisonData;
         return (
-            <table style={{ width: '100%', overflow: 'auto', display: 'block' }}>
+            <Table  striped style={{ width: '100%', overflow: 'auto', display: 'block' }}>
                 {/*  define headers*/}
                 <thead style={{ borderTop: '1px solid black', borderBottom: '1px solid black' }}>
                     <tr>
@@ -117,7 +119,7 @@ class ExampleA extends Component {
                         );
                     })}
                 </tbody>
-            </table>
+            </Table>
         );
     };
 
@@ -140,9 +142,18 @@ class ExampleA extends Component {
                     }}
                 >
                     {dataValues.map(val => {
+                        if( val.label !== undefined ) {
+                            if(val.label.includes("http")){
+                                console.log(val.label);
+                                return (
+                                    <a style={{ color: '#6199E8' }} href={val.label}>{val.label}</a>
+                                )
+                            }    
+                        } 
                         return val.label + ' ';
                     })}
                 </td>
+
             );
         });
     };
